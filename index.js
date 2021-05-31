@@ -1,10 +1,29 @@
+/**
+ * merges given classes according to conditions
+ * @param  {...{name:string,condition:boolean}} classes
+ * @returns {string} unified class name
+ */
 function mergeClassNames(...classes) {
+  if (classes.length <= 0) return "";
   let classList = [];
-  for (let className of classes) {
-    if (className.class && className.condition) classList.push(className.class);
+  for (let classWrap of classes) {
+    if (classWrap.name && classWrap.condition) classList.push(classWrap.name);
   }
   const unifiedClass = classList.join(" ");
   return unifiedClass;
 }
 
-module.exports = mergeClassNames;
+/**
+ * fail safe switch between classes
+ * @param {number | boolean} index
+ * @param {string[]} classNames
+ * @returns {string} class name
+ */
+function switchClassNames(index, classNames) {
+  if (typeof index === "boolean") index = index ? 1 : 0;
+  const className = classNames[index];
+  if (!className) return "";
+  return className;
+}
+
+module.exports = { mergeClassNames, switchClassNames };
