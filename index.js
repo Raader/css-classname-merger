@@ -8,6 +8,7 @@ function mergeClassNames(...classes) {
   let classList = [];
   for (let classWrap of classes) {
     if (classWrap.name && classWrap.condition) classList.push(classWrap.name);
+    else if (typeof classWrap === "string") classList.push(classWrap);
   }
   const unifiedClass = classList.join(" ");
   return unifiedClass;
@@ -16,10 +17,10 @@ function mergeClassNames(...classes) {
 /**
  * fail safe switch between classes
  * @param {number | boolean} index
- * @param {string[]} classNames
+ * @param {...string} classNames
  * @returns {string} class name
  */
-function switchClassNames(index, classNames) {
+function switchClassNames(index, ...classNames) {
   if (typeof index === "boolean") index = index ? 1 : 0;
   const className = classNames[index];
   if (!className) return "";
