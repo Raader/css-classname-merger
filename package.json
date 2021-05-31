@@ -1,0 +1,15 @@
+{
+  "name": "css-classname-merger",
+  "version": "1.0.0",
+  "description": "Conditionally merges css classnames.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Raader",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "mocha": "^8.4.0"
+  }
+}
